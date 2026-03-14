@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h2 style="text-align: center; color: var(--primary-blue); margin-top: 20px; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">Made By Arirama Selvam M</h2>
     <h1>Anna University Provisional Results</h1>
     <div id="result-container">
         <div id="loadingIndicator" style="display: none; padding: 10px; color: #555; font-style: italic;">
@@ -17,7 +18,21 @@
         <div id="tablesContainer">
             <!-- Tables will be dynamically injected here -->
         </div>
+
+        <section class="official-verification" style="margin-top: 40px; text-align: center;">
+            <h4>Official Confirmation</h4>
+            <p>This is a provisional result generated from PDF data. For official verification and to confirm your marks, please visit the official Anna University portal.</p>
+            <a href="https://coe.annauniv.edu/home/index.php" target="_blank" rel="noopener noreferrer" class="btn-official">Verify on Official Portal</a>
+        </section>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2026 Student Result Portal - Made By Arirama Selvam M</p>
+            <p class="footer-text" style="font-size: 0.8rem;">Data parsed locally from data.pdf</p>
+        </div>
+    </footer>
+
     <!-- Include PDF.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="script.js"></script>

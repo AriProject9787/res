@@ -196,7 +196,10 @@ function renderMarkSheet(student, semester) {
             </table>
 
             <div class="card-footer">
-                <p>Digital copy generated on ${new Date().toLocaleDateString()}</p>
+                <div>
+                    <p>Digital copy generated on ${new Date().toLocaleDateString()}</p>
+                    <p style="font-size: 0.7rem; color: #aaa; margin-top: 4px;">Verification ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+                </div>
                 <div class="seal">COE AUTHENTICATED</div>
             </div>
         </div>

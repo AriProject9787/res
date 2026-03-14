@@ -1,157 +1,165 @@
-body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
-table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
-th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-th { background-color: #004a99; color: white; }
-tr:nth-child(even) { background-color: #f2f2f2; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
 
-.controls {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
+:root {
+    --primary-blue: #004a99;
+    --dark-blue: #002d5e;
+    --light-bg: #f4f7f9;
+    --white: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+    --success-green: #16a34a;
+    --error-red: #dc2626;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --premium-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-.custom-file-upload {
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #004a99;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.custom-file-upload:hover {
-    background-color: #003366;
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
 }
 
-#loadingIndicator {
-    color: #555;
-    font-style: italic;
+h1 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 800;
 }
 
-/* Header Nav */
-.header-nav {
-    margin-bottom: 20px;
-}
-.nav-link {
-    text-decoration: none;
-    color: #004a99;
-    font-weight: bold;
-}
-
-/* Container & Search */
-.container {
+/* Common Layout */
+.container, #result-container {
     max-width: 900px;
     margin: 0 auto;
 }
 
-.search-card {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    margin-bottom: 30px;
+/* Nav Links */
+.header-nav, .nav-links {
+    margin-bottom: 20px;
 }
 
-.search-card h1 {
-    color: #004a99;
-    margin-bottom: 10px;
+.nav-link, .nav-links a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 700;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover, .nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* Search Card Styling */
+.search-card {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: var(--premium-shadow);
+    text-align: center;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.search-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
 }
 
 .search-box {
-    margin-top: 25px;
     display: flex;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .search-box input {
-    padding: 12px 20px;
-    width: 300px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
+    padding: 14px 20px;
+    width: 320px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .search-box input:focus {
-    border-color: #004a99;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(0, 74, 153, 0.1);
 }
 
 .search-box button {
-    padding: 12px 30px;
-    background-color: #004a99;
+    padding: 14px 28px;
+    background: var(--primary-blue);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 10px;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .search-box button:hover {
-    background-color: #003366;
+    background: var(--dark-blue);
+    transform: translateY(-1px);
 }
 
-/* Loader */
-.loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #004a99;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto 10px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Marks Card (Marksheet Look) */
+/* Digital Mark Sheet Card */
 .marks-card {
-    background: white;
-    border: 2px solid #333;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: var(--white);
+    border: 2px solid #444;
+    padding: 3rem;
+    box-shadow: var(--premium-shadow);
     position: relative;
     max-width: 800px;
-    margin: 0 auto 40px; /* Added spacing between cards */
+    margin: 0 auto 3rem;
+    overflow: hidden;
+}
+
+.marks-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--primary-blue);
 }
 
 .card-header {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #333;
-    padding-bottom: 20px;
-    margin-bottom: 25px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .card-logo {
-    width: 80px;
+    width: 70px;
     margin-right: 20px;
 }
 
 .header-text h2 {
+    font-size: 1.4rem;
     margin: 0;
-    font-size: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .header-text h3 {
-    margin: 5px 0 0;
-    font-size: 16px;
+    font-size: 0.9rem;
     color: #555;
-    font-weight: normal;
+    margin-top: 4px;
+    font-weight: 500;
 }
 
 .student-info {
-    margin-bottom: 25px;
+    margin-bottom: 2rem;
 }
 
 .info-row {
@@ -160,57 +168,114 @@ tr:nth-child(even) { background-color: #f2f2f2; }
 }
 
 .info-row .label {
-    width: 200px;
-    font-weight: bold;
+    width: 220px;
+    font-weight: 700;
     color: #444;
 }
 
 .info-row .value {
     text-transform: uppercase;
-    border-bottom: 1px dashed #999;
+    font-weight: 500;
+    border-bottom: 1px dotted #888;
     flex: 1;
 }
 
-.marks-table {
+/* Tables Styling */
+table {
     width: 100%;
-    margin-top: 20px;
-    border: 1px solid #333;
+    border-collapse: collapse;
+    background: var(--white);
+    margin-top: 15px;
+    border: 1px solid #444;
 }
 
-.marks-table th {
-    background-color: #eee;
-    color: #333;
-    padding: 10px;
-    border: 1px solid #333;
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.95rem;
 }
 
-.marks-table td {
-    padding: 10px;
-    border: 1px solid #333;
+.marks-table th, .marks-table td {
+    border: 1px solid #444;
 }
 
-.pass { color: green; font-weight: bold; }
-.fail { color: red; font-weight: bold; }
+th {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
 
+tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.pass { color: var(--success-green); font-weight: 800; }
+.fail { color: var(--error-red); font-weight: 800; }
+
+/* Semester Sections for List View */
+.semester-section {
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.semester-title {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--primary-blue);
+    display: inline-block;
+}
+
+/* Footer & Seal */
 .card-footer {
-    margin-top: 40px;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
+.card-footer p {
+    font-size: 0.8rem;
+    color: #777;
+}
+
 .seal {
-    border: 3px double #004a99;
-    color: #004a99;
-    padding: 10px 15px;
-    font-weight: bold;
+    border: 3px double var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 8px 16px;
+    font-weight: 900;
+    font-size: 0.9rem;
     transform: rotate(-10deg);
-    opacity: 0.7;
-    border-radius: 8px;
+    opacity: 0.6;
+    border-radius: 4px;
+}
+
+/* Loader */
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-blue);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .animate-in {
-    animation: fadeInUp 0.5s ease-out;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeInUp {
@@ -218,26 +283,35 @@ tr:nth-child(even) { background-color: #f2f2f2; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.error-msg {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 20px;
-    border-radius: 6px;
-    text-align: center;
-}
-
-.semester-section {
-    margin-top: 30px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.semester-title {
-    color: #004a99;
-    border-bottom: 2px solid #004a99;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+    .search-box {
+        flex-direction: column;
+    }
+    .search-box input {
+        width: 100%;
+    }
+    .marks-card {
+        padding: 1.5rem;
+    }
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    .info-row {
+        flex-direction: column;
+    }
+    .info-row .label {
+        width: 100%;
+        margin-bottom: 2px;
+    }
+    .card-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
 }
