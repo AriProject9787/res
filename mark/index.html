@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Result Extractor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Anna University Provisional Results</h1>
+    <div id="result-container">
+        <div id="loadingIndicator" style="display: none; padding: 10px; color: #555; font-style: italic;">
+            <i class="icon">⏳</i> Processing data.pdf... Please wait.
+        </div>
+        <div class="nav-links" style="margin-bottom: 15px; text-align: right;">
+            <a href="result.html" style="text-decoration: none; color: #004a99; font-weight: bold;">🔍 Search Individual Result</a>
+        </div>
+        <div id="tablesContainer">
+            <!-- Tables will be dynamically injected here -->
+        </div>
+    </div>
+    <!-- Include PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Inquiry - Anna University</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header-nav">
+        <a href="index.html" class="nav-link">← Back to Student List</a>
+    </div>
+
+    <div class="container">
+        <div class="search-card">
+            <h1>Anna University Results Portal</h1>
+            <p>Enter your registration number to view your provisional results.</p>
+            
+            <div class="search-box">
+                <input type="text" id="regNumberInput" placeholder="Enter Registration Number (12 digits)" maxlength="12">
+                <button id="viewResultBtn">View Result</button>
+            </div>
+            
+            <div id="loadingIndicator" style="display: none;">
+                <div class="loader"></div>
+                <p>Fetching results from database... Please wait.</p>
+            </div>
+        </div>
+
+        <div id="resultOutput" class="result-display">
+            <!-- Result Mark Sheet will be rendered here -->
+        </div>
+    </div>
+
+    <!-- Include PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="result.js"></script>
+</body>
+</html>
